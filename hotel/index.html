@@ -1,1110 +1,312 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ocean Breeze Resort Luxury Beachside Place</title>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap");
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      :root {
-        --primary: #0ea5e9;
-        --secondary: #f59e0b;
-        --dark: #0f172a;
-        --light: #f8fafc;
-        --ocean: #06b6d4;
-      }
-
-      body {
-        font-family: "Montserrat", sans-serif;
-        color: var(--dark);
-        overflow-x: hidden;
-        background: #ffffff;
-      }
-
-      /* Navigation */
-      nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        padding: 20px 60px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        z-index: 1000;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s;
-      }
-
-      nav.scrolled {
-        padding: 15px 60px;
-        background: rgba(255, 255, 255, 0.98);
-      }
-
-      .logo {
-        font-family: "Playfair Display", serif;
-        font-size: 28px;
-        font-weight: 700;
-        color: var(--primary);
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 40px;
-        list-style: none;
-      }
-
-      .nav-links a {
-        color: var(--dark);
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 15px;
-        transition: color 0.3s;
-        position: relative;
-      }
-
-      .nav-links a::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: var(--primary);
-        transition: width 0.3s;
-      }
-
-      .nav-links a:hover {
-        color: var(--primary);
-      }
-
-      .nav-links a:hover::after {
-        width: 100%;
-      }
-
-      .book-now-btn {
-        padding: 12px 30px;
-        background: linear-gradient(135deg, var(--primary), var(--ocean));
-        color: white;
-        border: none;
-        border-radius: 30px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s;
-        box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
-      }
-
-      .book-now-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4);
-      }
-
-      /* Hero Section */
-      .hero {
-        height: 100vh;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-      }
-
-      .hero-bg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background:
-          linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
-          url("https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1920&h=1080&fit=crop")
-            center/cover no-repeat;
-        animation: zoomIn 20s infinite alternate;
-      }
-
-      @keyframes zoomIn {
-        0% {
-          transform: scale(1);
-        }
-        100% {
-          transform: scale(1.1);
-        }
-      }
-
-      .hero-content {
-        position: relative;
-        z-index: 10;
-        text-align: center;
-        color: white;
-        max-width: 900px;
-        padding: 0 20px;
-        animation: fadeInUp 1s ease;
-      }
-
-      .hero-tag {
-        font-size: 16px;
-        letter-spacing: 3px;
-        margin-bottom: 20px;
-        text-transform: uppercase;
-        color: var(--secondary);
-        font-weight: 600;
-      }
-
-      .hero-title {
-        font-family: "Playfair Display", serif;
-        font-size: 80px;
-        font-weight: 800;
-        margin-bottom: 25px;
-        line-height: 1.1;
-        text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.5);
-      }
-
-      .hero-subtitle {
-        font-size: 22px;
-        margin-bottom: 40px;
-        font-weight: 300;
-        opacity: 0.95;
-      }
-
-      .hero-buttons {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-      }
-
-      .btn {
-        padding: 18px 45px;
-        font-size: 16px;
-        font-weight: 600;
-        border-radius: 50px;
-        text-decoration: none;
-        transition: all 0.4s;
-        border: none;
-        cursor: pointer;
-      }
-
-      .btn-primary {
-        background: linear-gradient(135deg, var(--primary), var(--ocean));
-        color: white;
-        box-shadow: 0 8px 30px rgba(14, 165, 233, 0.4);
-      }
-
-      .btn-primary:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 40px rgba(14, 165, 233, 0.5);
-      }
-
-      .btn-secondary {
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(10px);
-        border: 2px solid white;
-        color: white;
-      }
-
-      .btn-secondary:hover {
-        background: white;
-        color: var(--dark);
-        transform: translateY(-5px);
-      }
-
-      /* Promo Banner */
-      .promo-banner {
-        background: linear-gradient(135deg, var(--secondary), #f97316);
-        padding: 20px 60px;
-        text-align: center;
-        color: white;
-        font-size: 18px;
-        font-weight: 600;
-        box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
-      }
-
-      .promo-banner span {
-        font-size: 24px;
-        font-weight: 800;
-        margin: 0 10px;
-      }
-
-      /* Section Styling */
-      .section {
-        padding: 100px 60px;
-      }
-
-      .section-title {
-        font-family: "Playfair Display", serif;
-        font-size: 50px;
-        font-weight: 700;
-        text-align: center;
-        margin-bottom: 20px;
-        color: var(--dark);
-      }
-
-      .section-subtitle {
-        text-align: center;
-        font-size: 18px;
-        color: #64748b;
-        margin-bottom: 60px;
-        max-width: 700px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      /* Rooms Grid */
-      .rooms-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-        gap: 40px;
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-
-      .room-card {
-        background: white;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        transition: all 0.4s;
-        cursor: pointer;
-      }
-
-      .room-card:hover {
-        transform: translateY(-15px);
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-      }
-
-      .room-image-wrapper {
-        position: relative;
-        height: 300px;
-        overflow: hidden;
-      }
-
-      .room-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s;
-      }
-
-      .room-card:hover .room-image {
-        transform: scale(1.1);
-      }
-
-      .room-badge {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        background: var(--secondary);
-        color: white;
-        padding: 8px 20px;
-        border-radius: 30px;
-        font-weight: 700;
-        font-size: 14px;
-      }
-
-      .room-info {
-        padding: 30px;
-      }
-
-      .room-title {
-        font-family: "Playfair Display", serif;
-        font-size: 28px;
-        font-weight: 700;
-        margin-bottom: 15px;
-        color: var(--dark);
-      }
-
-      .room-description {
-        font-size: 15px;
-        color: #64748b;
-        line-height: 1.7;
-        margin-bottom: 20px;
-      }
-
-      .room-features {
-        display: flex;
-        gap: 15px;
-        margin-bottom: 25px;
-        flex-wrap: wrap;
-      }
-
-      .feature {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 14px;
-        color: #475569;
-      }
-
-      .room-price {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-top: 1px solid #e2e8f0;
-        padding-top: 20px;
-      }
-
-      .price {
-        font-size: 32px;
-        font-weight: 800;
-        color: var(--primary);
-      }
-
-      .price span {
-        font-size: 16px;
-        font-weight: 500;
-        color: #94a3b8;
-      }
-
-      .old-price {
-        text-decoration: line-through;
-        color: #94a3b8;
-        font-size: 18px;
-        margin-right: 10px;
-      }
-
-      /* Amenities Section */
-      .amenities-section {
-        background: linear-gradient(135deg, #0ea5e9, #06b6d4);
-        color: white;
-      }
-
-      .amenities-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 40px;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .amenity-card {
-        text-align: center;
-        padding: 40px 20px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        border-radius: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        transition: all 0.3s;
-      }
-
-      .amenity-card:hover {
-        background: rgba(255, 255, 255, 0.2);
-        transform: translateY(-10px);
-      }
-
-      .amenity-icon {
-        font-size: 50px;
-        margin-bottom: 20px;
-      }
-
-      .amenity-card h3 {
-        font-size: 22px;
-        margin-bottom: 15px;
-        font-weight: 600;
-      }
-
-      .amenity-card p {
-        font-size: 15px;
-        opacity: 0.9;
-        line-height: 1.6;
-      }
-
-      /* Gallery Section */
-      .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-
-      .gallery-item {
-        height: 300px;
-        overflow: hidden;
-        border-radius: 15px;
-        cursor: pointer;
-        position: relative;
-      }
-
-      .gallery-item:nth-child(1) {
-        grid-column: span 2;
-        grid-row: span 2;
-        height: 620px;
-      }
-
-      .gallery-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s;
-      }
-
-      .gallery-item:hover img {
-        transform: scale(1.2);
-      }
-
-      .gallery-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), transparent);
-        opacity: 0;
-        transition: opacity 0.3s;
-        display: flex;
-        align-items: flex-end;
-        padding: 30px;
-        color: white;
-        font-size: 20px;
-        font-weight: 600;
-      }
-
-      .gallery-item:hover .gallery-overlay {
-        opacity: 1;
-      }
-
-      /* Testimonials */
-      .testimonials-section {
-        background: #f8fafc;
-      }
-
-      .testimonials-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 30px;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .testimonial-card {
-        background: white;
-        padding: 40px;
-        border-radius: 20px;
-        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s;
-      }
-
-      .testimonial-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
-      }
-
-      .stars {
-        color: var(--secondary);
-        font-size: 20px;
-        margin-bottom: 20px;
-      }
-
-      .testimonial-text {
-        font-size: 16px;
-        line-height: 1.8;
-        color: #475569;
-        margin-bottom: 25px;
-        font-style: italic;
-      }
-
-      .testimonial-author {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-      }
-
-      .author-avatar {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        object-fit: cover;
-      }
-
-      .author-info h4 {
-        font-size: 18px;
-        font-weight: 600;
-        margin-bottom: 5px;
-      }
-
-      .author-info p {
-        font-size: 14px;
-        color: #94a3b8;
-      }
-
-      /* CTA Section */
-      .cta-section {
-        background:
-          linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-          url("https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1920&h=600&fit=crop")
-            center/cover fixed;
-        padding: 120px 60px;
-        text-align: center;
-        color: white;
-      }
-
-      .cta-section h2 {
-        font-family: "Playfair Display", serif;
-        font-size: 60px;
-        margin-bottom: 25px;
-        font-weight: 800;
-      }
-
-      .cta-section p {
-        font-size: 22px;
-        margin-bottom: 40px;
-        opacity: 0.95;
-      }
-
-      /* Footer */
-      footer {
-        background: var(--dark);
-        color: white;
-        padding: 60px 60px 30px;
-      }
-
-      .footer-content {
-        display: grid;
-        grid-template-columns: 2fr 1fr 1fr 1fr;
-        gap: 60px;
-        max-width: 1400px;
-        margin: 0 auto 40px;
-      }
-
-      .footer-about h3 {
-        font-family: "Playfair Display", serif;
-        font-size: 28px;
-        margin-bottom: 20px;
-        color: var(--primary);
-      }
-
-      .footer-about p {
-        line-height: 1.8;
-        color: #94a3b8;
-        margin-bottom: 20px;
-      }
-
-      .footer-links h4 {
-        font-size: 18px;
-        margin-bottom: 20px;
-        font-weight: 600;
-      }
-
-      .footer-links ul {
-        list-style: none;
-      }
-
-      .footer-links ul li {
-        margin-bottom: 12px;
-      }
-
-      .footer-links a {
-        color: #94a3b8;
-        text-decoration: none;
-        transition: color 0.3s;
-      }
-
-      .footer-links a:hover {
-        color: var(--primary);
-      }
-
-      .footer-bottom {
-        text-align: center;
-        padding-top: 30px;
-        border-top: 1px solid #334155;
-        color: #94a3b8;
-      }
-
-      /* Animations */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .fade-in {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.8s ease;
-      }
-
-      .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* Responsive */
-      @media (max-width: 1024px) {
-        .gallery-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .gallery-item:nth-child(1) {
-          grid-column: span 1;
-          grid-row: span 1;
-          height: 300px;
-        }
-
-        .footer-content {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-
-      @media (max-width: 768px) {
-        nav {
-          padding: 15px 30px;
-        }
-
-        .nav-links {
-          display: none;
-        }
-
-        .hero-title {
-          font-size: 50px;
-        }
-
-        .section {
-          padding: 60px 30px;
-        }
-
-        .section-title {
-          font-size: 36px;
-        }
-
-        .rooms-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .gallery-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .footer-content {
-          grid-template-columns: 1fr;
-        }
-
-        .cta-section h2 {
-          font-size: 40px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Navigation -->
-    <nav id="navbar">
-      <div class="logo">Ocean Breeze</div>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#rooms">Rooms</a></li>
-        <li><a href="#amenities">Amenities</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <button class="book-now-btn">Book Now</button>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-      <div class="hero-bg"></div>
-      <div class="hero-content">
-        <p class="hero-tag">Luxury Beachside Resort</p>
-        <h1 class="hero-title">Paradise Awaits You</h1>
-        <p class="hero-subtitle">
-          Experience the ultimate beachfront escape with stunning ocean views
-          and world-class amenities
-        </p>
-        <div class="hero-buttons">
-          <a href="#rooms" class="btn btn-primary">Explore Rooms</a>
-          <a href="#gallery" class="btn btn-secondary">View Gallery</a>
-        </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Ocean Breeze Resort | Luxury Beachside Paradise</title>
+  <meta name="description" content="Experience the ultimate beachfront escape with stunning ocean views, infinity pool, fine dining, and exclusive suites. Book now with 40% OFF limited offer.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="logo">Ocean Breeze</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#rooms">Rooms</a></li>
+      <li><a href="#amenities">Amenities</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="book-now-btn" aria-label="Book now">Book Now</button>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-tag">Luxury Beachside Resort</p>
+      <h1 class="hero-title">Paradise Awaits You</h1>
+      <p class="hero-subtitle">
+        Experience the ultimate beachfront escape with stunning ocean views
+        and world-class amenities
+      </p>
+      <div class="hero-buttons">
+        <a href="#rooms" class="btn btn-primary">Explore Rooms</a>
+        <a href="#gallery" class="btn btn-secondary">View Gallery</a>
       </div>
-    </section>
-
-    <!-- Promo Banner -->
-    <div class="promo-banner">
-      🌴 LIMITED TIME OFFER: <span>40% OFF</span> on all beachfront rooms! Book
-      before December 31st 🌴
     </div>
+  </section>
 
-    <!-- Rooms Section -->
-    <section class="section" id="rooms">
-      <h2 class="section-title">Our Premium Rooms</h2>
-      <p class="section-subtitle">
-        Choose from our collection of luxurious beachside accommodations, each
-        designed to provide the perfect oceanfront experience
-      </p>
+  <div class="promo-banner">
+    🌴 LIMITED TIME OFFER: <span>40% OFF</span> on all beachfront rooms! Book before December 31st 🌴
+  </div>
 
-      <div class="rooms-grid">
-        <div class="room-card fade-in">
-          <div class="room-image-wrapper">
-            <img
-              src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&h=600&fit=crop"
-              alt="Deluxe Ocean View"
-              class="room-image"
-            />
-            <div class="room-badge">40% OFF</div>
-          </div>
-          <div class="room-info">
-            <h3 class="room-title">Deluxe Ocean View</h3>
-            <p class="room-description">
-              Spacious room with panoramic ocean views, private balcony, and
-              modern amenities. Perfect for couples seeking romance.
-            </p>
-            <div class="room-features">
-              <span class="feature">🛏️ King Bed</span>
-              <span class="feature">👥 2 Guests</span>
-              <span class="feature">📏 45 m²</span>
-              <span class="feature">🌊 Ocean View</span>
-            </div>
-            <div class="room-price">
-              <div>
-                <span class="old-price">$299</span>
-                <span class="price">$179<span>/night</span></span>
-              </div>
-              <button class="book-now-btn">Book Now</button>
-            </div>
-          </div>
+  <section class="section" id="rooms">
+    <h2 class="section-title">Our Premium Rooms</h2>
+    <p class="section-subtitle">
+      Choose from our collection of luxurious beachside accommodations, each
+      designed to provide the perfect oceanfront experience
+    </p>
+
+    <div class="rooms-grid">
+      <div class="room-card fade-in">
+        <div class="room-image-wrapper">
+          <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&h=600&fit=crop" alt="Deluxe Ocean View room with king bed and private balcony" class="room-image" loading="lazy">
+          <div class="room-badge">40% OFF</div>
         </div>
-
-        <div class="room-card fade-in">
-          <div class="room-image-wrapper">
-            <img
-              src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800&h=600&fit=crop"
-              alt="Premium Suite"
-              class="room-image"
-            />
-            <div class="room-badge">40% OFF</div>
+        <div class="room-info">
+          <h3 class="room-title">Deluxe Ocean View</h3>
+          <p class="room-description">
+            Spacious room with panoramic ocean views, private balcony, and
+            modern amenities. Perfect for couples seeking romance.
+          </p>
+          <div class="room-features">
+            <span class="feature">🛏️ King Bed</span>
+            <span class="feature">👥 2 Guests</span>
+            <span class="feature">📏 45 m²</span>
+            <span class="feature">🌊 Ocean View</span>
           </div>
-          <div class="room-info">
-            <h3 class="room-title">Premium Beachfront Suite</h3>
-            <p class="room-description">
-              Luxurious suite with direct beach access, living area, and
-              exclusive amenities. Ultimate comfort and privacy.
-            </p>
-            <div class="room-features">
-              <span class="feature">🛏️ King Bed</span>
-              <span class="feature">👥 2-4 Guests</span>
-              <span class="feature">📏 70 m²</span>
-              <span class="feature">🏖️ Beach Access</span>
+          <div class="room-price">
+            <div>
+              <span class="old-price">$299</span>
+              <span class="price">$179<span>/night</span></span>
             </div>
-            <div class="room-price">
-              <div>
-                <span class="old-price">$499</span>
-                <span class="price">$299<span>/night</span></span>
-              </div>
-              <button class="book-now-btn">Book Now</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="room-card fade-in">
-          <div class="room-image-wrapper">
-            <img
-              src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&h=600&fit=crop"
-              alt="Family Villa"
-              class="room-image"
-            />
-            <div class="room-badge">40% OFF</div>
-          </div>
-          <div class="room-info">
-            <h3 class="room-title">Family Beach Villa</h3>
-            <p class="room-description">
-              Spacious villa with multiple bedrooms, private pool, and stunning
-              ocean views. Perfect for family getaways.
-            </p>
-            <div class="room-features">
-              <span class="feature">🛏️ 3 Bedrooms</span>
-              <span class="feature">👥 6 Guests</span>
-              <span class="feature">📏 120 m²</span>
-              <span class="feature">🏊 Private Pool</span>
-            </div>
-            <div class="room-price">
-              <div>
-                <span class="old-price">$799</span>
-                <span class="price">$479<span>/night</span></span>
-              </div>
-              <button class="book-now-btn">Book Now</button>
-            </div>
+            <button class="book-now-btn room-book">Book Now</button>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- Amenities Section -->
-    <section class="section amenities-section" id="amenities">
-      <h2 class="section-title">World-Class Amenities</h2>
-      <p class="section-subtitle">
-        Enjoy an array of premium facilities designed to make your stay
-        unforgettable
-      </p>
-
-      <div class="amenities-grid">
-        <div class="amenity-card fade-in">
-          <div class="amenity-icon">🏊‍♂️</div>
-          <h3>Infinity Pool</h3>
-          <p>
-            Stunning infinity pool overlooking the ocean with poolside bar
-            service
+      <div class="room-card fade-in">
+        <div class="room-image-wrapper">
+          <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800&h=600&fit=crop" alt="Premium Beachfront Suite with living area and beach access" class="room-image" loading="lazy">
+          <div class="room-badge">40% OFF</div>
+        </div>
+        <div class="room-info">
+          <h3 class="room-title">Premium Beachfront Suite</h3>
+          <p class="room-description">
+            Luxurious suite with direct beach access, living area, and
+            exclusive amenities. Ultimate comfort and privacy.
           </p>
-        </div>
-        <div class="amenity-card fade-in">
-          <div class="amenity-icon">🍽️</div>
-          <h3>Fine Dining</h3>
-          <p>
-            Award-winning restaurants serving international and local cuisine
-          </p>
-        </div>
-        <div class="amenity-card fade-in">
-          <div class="amenity-icon">💆‍♀️</div>
-          <h3>Spa & Wellness</h3>
-          <p>Full-service spa with massage, yoga, and wellness treatments</p>
-        </div>
-        <div class="amenity-card fade-in">
-          <div class="amenity-icon">🏋️</div>
-          <h3>Fitness Center</h3>
-          <p>
-            State-of-the-art gym with modern equipment and personal trainers
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section class="section" id="gallery">
-      <h2 class="section-title">Resort Gallery</h2>
-      <p class="section-subtitle">
-        Discover the beauty of Ocean Breeze Resort through our stunning
-        collection
-      </p>
-
-      <div class="gallery-grid">
-        <div class="gallery-item fade-in">
-          <img
-            src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1000&h=1200&fit=crop"
-            alt="Beach View"
-          />
-          <div class="gallery-overlay">Private Beach Access</div>
-        </div>
-        <div class="gallery-item fade-in">
-          <img
-            src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&h=600&fit=crop"
-            alt="Pool"
-          />
-          <div class="gallery-overlay">Infinity Pool</div>
-        </div>
-        <div class="gallery-item fade-in">
-          <img
-            src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&h=600&fit=crop"
-            alt="Restaurant"
-          />
-          <div class="gallery-overlay">Beachfront Restaurant</div>
-        </div>
-        <div class="gallery-item fade-in">
-          <img
-            src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=600&h=600&fit=crop"
-            alt="Sunset"
-          />
-          <div class="gallery-overlay">Spectacular Sunsets</div>
-        </div>
-        <div class="gallery-item fade-in">
-          <img
-            src="https://images.unsplash.com/photo-1559599238-bfbbc8ddc5ba?w=600&h=600&fit=crop"
-            alt="Spa"
-          />
-          <div class="gallery-overlay">Luxury Spa</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="section testimonials-section">
-      <h2 class="section-title">Guest Reviews</h2>
-      <p class="section-subtitle">
-        Read what our satisfied guests have to say about their experience
-      </p>
-
-      <div class="testimonials-grid">
-        <div class="testimonial-card fade-in">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p class="testimonial-text">
-            "Absolutely stunning resort! The ocean views from our room were
-            breathtaking, and the staff went above and beyond to make our
-            honeymoon special. We'll definitely be back!"
-          </p>
-          <div class="testimonial-author">
-            <img
-              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop"
-              alt="Sarah"
-              class="author-avatar"
-            />
-            <div class="author-info">
-              <h4>Sarah Johnson</h4>
-              <p>Stayed in December 2025</p>
-            </div>
+          <div class="room-features">
+            <span class="feature">🛏️ King Bed</span>
+            <span class="feature">👥 2-4 Guests</span>
+            <span class="feature">📏 70 m²</span>
+            <span class="feature">🏖️ Beach Access</span>
           </div>
-        </div>
-
-        <div class="testimonial-card fade-in">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p class="testimonial-text">
-            "Perfect family vacation! The kids loved the beach and pool, while
-            we enjoyed the spa and restaurants. The villa was spacious and
-            beautifully decorated. Highly recommend!"
-          </p>
-          <div class="testimonial-author">
-            <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop"
-              alt="Michael"
-              class="author-avatar"
-            />
-            <div class="author-info">
-              <h4>Michael Chen</h4>
-              <p>Stayed in November 2025</p>
+          <div class="room-price">
+            <div>
+              <span class="old-price">$499</span>
+              <span class="price">$299<span>/night</span></span>
             </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card fade-in">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p class="testimonial-text">
-            "This place exceeded all our expectations! From the luxurious rooms
-            to the amazing food, everything was perfect. The sunset views are
-            simply magical. Best vacation ever!"
-          </p>
-          <div class="testimonial-author">
-            <img
-              src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop"
-              alt="Emma"
-              class="author-avatar"
-            />
-            <div class="author-info">
-              <h4>Emma Williams</h4>
-              <p>Stayed in October 2025</p>
-            </div>
+            <button class="book-now-btn room-book">Book Now</button>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-      <h2>Ready for Your Dream Vacation?</h2>
-      <p>Book now and save 40% on your beachfront escape!</p>
-      <button
-        class="btn btn-primary"
-        style="font-size: 18px; padding: 20px 50px"
-      >
-        Book Your Stay Now
-      </button>
-    </section>
-
-    <!-- Footer -->
-    <footer id="contact">
-      <div class="footer-content">
-        <div class="footer-about">
-          <h3>Ocean Breeze Resort</h3>
-          <p>
-            Experience luxury beachside living at its finest. Our resort offers
-            world-class amenities, stunning ocean views, and unforgettable
-            memories, get the experience 
+      <div class="room-card fade-in">
+        <div class="room-image-wrapper">
+          <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&h=600&fit=crop" alt="Family Beach Villa with private pool and three bedrooms" class="room-image" loading="lazy">
+          <div class="room-badge">40% OFF</div>
+        </div>
+        <div class="room-info">
+          <h3 class="room-title">Family Beach Villa</h3>
+          <p class="room-description">
+            Spacious villa with multiple bedrooms, private pool, and stunning
+            ocean views. Perfect for family getaways.
           </p>
-          <p>
-            📍 123 Paradise Beach, Coastal City<br />
-            📞 +1 (555) 123-4567<br />
-            ✉️ info@oceanbreezeresort.com
-          </p>
-        </div>
-        <div class="footer-links">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="#rooms">Rooms & Suites</a></li>
-            <li><a href="#amenities">Amenities</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#">Special Offers</a></li>
-          </ul>
-        </div>
-        <div class="footer-links">
-          <h4>Services</h4>
-          <ul>
-            <li><a href="#">Spa & Wellness</a></li>
-            <li><a href="#">Dining</a></li>
-            <li><a href="#">Events</a></li>
-            <li><a href="#">Activities</a></li>
-          </ul>
-        </div>
-        <div class="footer-links">
-          <h4>Support</h4>
-          <ul>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">FAQs</a></li>
-            <li><a href="#">Policies</a></li>
-            <li><a href="#">Careers</a></li>
-          </ul>
+          <div class="room-features">
+            <span class="feature">🛏️ 3 Bedrooms</span>
+            <span class="feature">👥 6 Guests</span>
+            <span class="feature">📏 120 m²</span>
+            <span class="feature">🏊 Private Pool</span>
+          </div>
+          <div class="room-price">
+            <div>
+              <span class="old-price">$799</span>
+              <span class="price">$479<span>/night</span></span>
+            </div>
+            <button class="book-now-btn room-book">Book Now</button>
+          </div>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Ocean Breeze Resort. All rights reserved.</p>
+    </div>
+  </section>
+
+  <section class="section amenities-section" id="amenities">
+    <h2 class="section-title">World-Class Amenities</h2>
+    <p class="section-subtitle">
+      Enjoy an array of premium facilities designed to make your stay
+      unforgettable
+    </p>
+
+    <div class="amenities-grid">
+      <div class="amenity-card fade-in">
+        <div class="amenity-icon">🏊‍♂️</div>
+        <h3>Infinity Pool</h3>
+        <p>Stunning infinity pool overlooking the ocean with poolside bar service</p>
       </div>
-    </footer>
+      <div class="amenity-card fade-in">
+        <div class="amenity-icon">🍽️</div>
+        <h3>Fine Dining</h3>
+        <p>Award-winning restaurants serving international and local cuisine</p>
+      </div>
+      <div class="amenity-card fade-in">
+        <div class="amenity-icon">💆‍♀️</div>
+        <h3>Spa & Wellness</h3>
+        <p>Full-service spa with massage, yoga, and wellness treatments</p>
+      </div>
+      <div class="amenity-card fade-in">
+        <div class="amenity-icon">🏋️</div>
+        <h3>Fitness Center</h3>
+        <p>State-of-the-art gym with modern equipment and personal trainers</p>
+      </div>
+    </div>
+  </section>
 
-    <script>
-      // Navbar scroll effect
-      const navbar = document.getElementById("navbar");
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 100) {
-          navbar.classList.add("scrolled");
-        } else {
-          navbar.classList.remove("scrolled");
-        }
-      });
+  <section class="section" id="gallery">
+    <h2 class="section-title">Resort Gallery</h2>
+    <p class="section-subtitle">
+      Discover the beauty of Ocean Breeze Resort through our stunning collection
+    </p>
 
-      // Smooth scrolling
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            target.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-          }
-        });
-      });
+    <div class="gallery-grid">
+      <div class="gallery-item fade-in">
+        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1000&h=1200&fit=crop" alt="Private beach access with white sand" loading="lazy">
+        <div class="gallery-overlay">Private Beach Access</div>
+      </div>
+      <div class="gallery-item fade-in">
+        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&h=600&fit=crop" alt="Infinity pool overlooking ocean" loading="lazy">
+        <div class="gallery-overlay">Infinity Pool</div>
+      </div>
+      <div class="gallery-item fade-in">
+        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&h=600&fit=crop" alt="Beachfront restaurant with ocean view" loading="lazy">
+        <div class="gallery-overlay">Beachfront Restaurant</div>
+      </div>
+      <div class="gallery-item fade-in">
+        <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=600&h=600&fit=crop" alt="Spectacular sunset at the beach" loading="lazy">
+        <div class="gallery-overlay">Spectacular Sunsets</div>
+      </div>
+      <div class="gallery-item fade-in">
+        <img src="https://images.unsplash.com/photo-1559599238-bfbbc8ddc5ba?w=600&h=600&fit=crop" alt="Luxury spa treatment room" loading="lazy">
+        <div class="gallery-overlay">Luxury Spa</div>
+      </div>
+    </div>
+  </section>
 
-      // Intersection Observer for fade-in animations
-      const observerOptions = {
-        threshold: 0.2,
-        rootMargin: "0px 0px -50px 0px",
-      };
+  <section class="section testimonials-section">
+    <h2 class="section-title">Guest Reviews</h2>
+    <p class="section-subtitle">
+      Read what our satisfied guests have to say about their experience
+    </p>
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      }, observerOptions);
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-in">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">
+          "Absolutely stunning resort! The ocean views from our room were
+          breathtaking, and the staff went above and beyond to make our
+          honeymoon special. We'll definitely be back!"
+        </p>
+        <div class="testimonial-author">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop" alt="Sarah Johnson" class="author-avatar" loading="lazy">
+          <div class="author-info">
+            <h4>Sarah Johnson</h4>
+            <p>Stayed in December 2025</p>
+          </div>
+        </div>
+      </div>
 
-      document.querySelectorAll(".fade-in").forEach((element) => {
-        observer.observe(element);
-      });
+      <div class="testimonial-card fade-in">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">
+          "Perfect family vacation! The kids loved the beach and pool, while
+          we enjoyed the spa and restaurants. The villa was spacious and
+          beautifully decorated. Highly recommend!"
+        </p>
+        <div class="testimonial-author">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" alt="Michael Chen" class="author-avatar" loading="lazy">
+          <div class="author-info">
+            <h4>Michael Chen</h4>
+            <p>Stayed in November 2025</p>
+          </div>
+        </div>
+      </div>
 
-      // Book Now button functionality
-      document.querySelectorAll(".book-now-btn").forEach((button) => {
-        button.addEventListener("click", () => {
-          alert(
-            "🌴 Thank you for your interest! Our booking system will open soon. Call us at +1 (555) 123-4567 to reserve your room now!",
-          );
-        });
-      });
-    </script>
-  </body>
+      <div class="testimonial-card fade-in">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">
+          "This place exceeded all our expectations! From the luxurious rooms
+          to the amazing food, everything was perfect. The sunset views are
+          simply magical. Best vacation ever!"
+        </p>
+        <div class="testimonial-author">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop" alt="Emma Williams" class="author-avatar" loading="lazy">
+          <div class="author-info">
+            <h4>Emma Williams</h4>
+            <p>Stayed in October 2025</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>Ready for Your Dream Vacation?</h2>
+    <p>Book now and save 40% on your beachfront escape!</p>
+    <button class="btn btn-primary cta-button">Book Your Stay Now</button>
+  </section>
+
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-about">
+        <h3>Ocean Breeze Resort</h3>
+        <p>
+          Experience luxury beachside living at its finest. Our resort offers
+          world-class amenities, stunning ocean views, and unforgettable
+          memories, get the experience 
+        </p>
+        <p>
+          📍 123 Paradise Beach, Coastal City<br>
+          📞 +1 (555) 123-4567<br>
+          ✉️ info@oceanbreezeresort.com
+        </p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#rooms">Rooms & Suites</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#">Special Offers</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Spa & Wellness</a></li>
+          <li><a href="#">Dining</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="#">Activities</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Policies</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Ocean Breeze Resort. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>
