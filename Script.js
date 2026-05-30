@@ -45,7 +45,8 @@ document.querySelectorAll(".fade-in").forEach((element) => {
 // Book Now button functionality (all booking buttons)
 function handleBookNow() {
   alert(
-    "🌴 Thank you for your interest! Our booking system will open soon for you. Call us at +1 (555) 123-4567 to reserve your room soon!"
+    "🌴 Thank you for all
+    ! Our booking system will open soon for you. Call us at +1 (555) 123-4567 to reserve your room soon!"
   );
 }
 
